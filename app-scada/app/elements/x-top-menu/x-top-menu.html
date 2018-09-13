@@ -1,0 +1,163 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="x-top-menu">
+	<template>
+		<style is="custom-style" include="shared-styles">
+			:host {
+				display: block;
+				height: 100%;
+				width: 100%;
+			}
+			paper-dropdown-menu.custom {
+				max-width: 236px;
+				--paper-input-container-label: {
+					color: var(--paper-grey-100) !important;
+					font-style: italic;
+					font-weight: bold;
+					font-size: inherit;
+				};
+				--paper-input-container-input: {
+					color: white !important;
+					font-style: normal;
+					font-family: serif;
+					cursor: pointer;
+					font-size: inherit;
+				}
+				--paper-input-container-underline: {
+					display: none;
+				};
+				--paper-dropdown-menu-icon: {
+					color: var(--paper-blue-grey-100);
+				}
+			}
+			paper-dropdown-menu, paper-input {
+				@apply(--layout-self-end);
+			}
+			.sublist paper-item {
+				padding-left: 30px;
+			}
+			.sublist2 paper-item {
+				padding-left: 50px;
+			}
+			iron-icon {
+				padding-bottom: 1px;
+			}
+			@media (min-width: 0) and (max-width: 800px) {
+				#mainItem {
+					display: none;
+				}
+			}
+		</style>
+
+		<div class="layout horizontal start-justified wrap">
+
+			<paper-dropdown-menu id="dropdownMenu1" class="custom"
+													 horizontal-align="left"
+													 label="Поэтажные планы">
+				<paper-listbox class="dropdown-content"
+											 attr-for-selected="data-route"
+											 selected="{{data.page}}">
+					<paper-item data-route="floor1">Первый этаж</paper-item>
+					<paper-item data-route="floor2">Второй этаж</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+
+			<paper-dropdown-menu id="dropdownMenu2"
+													 horizontal-align="left"
+													 class="custom"
+													 label="Видеонаблюдение">
+				<paper-listbox class="dropdown-content"
+											 attr-for-selected="data-route"
+											 selected="{{data.page}}">
+					<paper-item data-route="cctv">Видеонаблюдение</paper-item>
+					<paper-item>Видеонаблюдение2</paper-item>
+					<paper-item>Видеонаблюдение3</paper-item>
+					<paper-item>Видеонаблюдение4</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+
+			<paper-dropdown-menu id="dropdownMenu3"
+													 horizontal-align="left"
+													 class="custom"
+													 label="Системы ЖКХ">
+				<paper-listbox class="dropdown-content"
+											 attr-for-selected="data-route"
+											 selected="{{data.page}}">
+
+					<paper-item data-route="fan">Зубодробильная машина З-1</paper-item>
+					<paper-item data-route="chiller">Гильотина Х-1</paper-item>
+					<paper-item data-route="exhaust">Вытяжная установка</paper-item>
+<!--
+					<paper-item data-route="fan">Вент. установка П-1</paper-item>
+					<paper-item data-route="chiller">Холодильная машина Х-1</paper-item>
+					<paper-item data-route="exhaust">Вытяжная установка</paper-item>
+ -->
+				</paper-listbox>
+			</paper-dropdown-menu>
+
+		</div>
+
+	</template>
+	<script>
+	(function() {
+		'use strict';
+
+		Polymer({
+			is: 'x-top-menu',
+			properties: {
+				data: {
+					type: Object,
+					notify: true
+				}
+			},
+			ready: function() {
+				// var dropdownMenuButton = this.$.paperDropdownMenu.$.menuButton;
+				// var dropdownMenus = this.querySelectorAll('paper-dropdown-menu');
+
+				// dropdownMenuButton.ignoreSelect = true;
+				// dropdownMenuButton.closeOnActivate = false;
+
+				// for (var i = 0; i < dropdownMenus.length; i++) {
+				// 	dropdownMenus[i].$.menuButton.ignoreSelect = true;
+				// 	dropdownMenus[i].$.menuButton.closeOnActivate = false;
+				// }
+			},
+			togglePanel: function() {
+				app.togglePanel();
+			}
+
+			// _menuItemActivated: function(e, detail) {
+				// if (detail.item.localName === "paper-item") {
+					// detail.item.selected = "true";
+					// e.target.offsetParent.offsetParent.close();
+				// }
+			// },
+			// _menuItemSelected: function(e, detail) {
+				// console.log('selected', e.target);
+				// if (e.detail.item.localName === "paper-item") {
+					// e.target.offsetParent.offsetParent.close();
+					// detail.item.selected = "false";
+				// }
+			// },
+			// _menuItemDeselected: function(e, detail) {
+				// console.log('deselected', e.target);
+				// if (e.detail.item.localName === "paper-item") {
+					// e.target.offsetParent.offsetParent.close();
+					// detail.item.selected = "false";
+				// }
+			// }
+
+		});
+	})();
+	</script>
+</dom-module>
