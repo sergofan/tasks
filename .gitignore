@@ -1,15 +1,17 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # Editor directories and files
-/*.idea
-/*.vscode
-/*.suo
-/*.ntvs*
-/*.njsproj
-/*.sln
-/*.komodoproject
+*/.idea
+*/*.vscode
+*/*.suo
+*/*.ntvs*
+*/*.njsproj
+*/*.sln
+*/*.komodoproject
 
 */node_modules
+*/.tmp
+*
 *.log
 
 #################################
