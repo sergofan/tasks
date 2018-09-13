@@ -1,0 +1,9 @@
+type Invoice {
+  id: ID! @unique
+  direction: String
+  number: Int
+  date_created: String
+  date_due: String
+  date_supply: String
+  comment: String
+}

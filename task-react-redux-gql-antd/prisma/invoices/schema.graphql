@@ -1,0 +1,30 @@
+type Invoice {
+    id: ID!
+    direction: String
+    number: Int
+    date_created: String
+    date_due: String
+    date_supply: String
+    comment: String
+}
+
+type Query {
+  invoice(id: ID!): Invoice
+  allInvoices(page: Int, perPage: Int, sortField: String, sortOrder: String, filter: String): [Invoice]
+  _allInvoicesMeta(page: Int, perPage: Int, sortField: String, sortOrder: String, filter: String): ListMetadata
+}
+
+type Mutation {
+  createInvoice(data: String): Invoice
+  updateInvoice(data: String): Invoice
+  removeInvoice(id: ID!): Boolean
+}
+
+type ListMetadata {
+    count: Int!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

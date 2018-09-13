@@ -1,0 +1,19 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/task-react-redux-gql-antd/node_modules
+
+# testing
+/task-react-redux-gql-antd/coverage
+
+# production
+/task-react-redux-gql-antd/build
+
+# misc
+/task-react-redux-gql-antd/.DS_Store
+/task-react-redux-gql-antd/.env.local
+/task-react-redux-gql-antd/.env.development.local
+/task-react-redux-gql-antd/.env.test.local
+/task-react-redux-gql-antd/.env.production.local
+
+/task-react-redux-gql-antd/*.log*
