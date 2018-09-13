@@ -1,0 +1,8 @@
+@import "normalize-scss/sass/normalize/_import-now.scss";
+@import "@material/button/mdc-button";
+@import "@material/top-app-bar/mdc-top-app-bar";
+
+.foo-button {
+  @include mdc-button-ink-color(teal);
+  @include mdc-states(teal);
+}

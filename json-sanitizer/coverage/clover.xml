@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1533559654995" clover="3.2.0">
+  <project timestamp="1533559654995" name="All files">
+    <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="3" elements="19" coveredelements="9" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1">
+      <file name="Sanitizer.js" path="/hdd/home/serg/A_src/json-sanitizer/src/Sanitizer.js">
+        <metrics statements="12" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+    </metrics>
+  </project>
+</coverage>

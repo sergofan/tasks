@@ -1,5 +1,11 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+*.log*
+
+#################################
+### task-react-redux-gql-antd ###
+#################################
+
 # dependencies
 /task-react-redux-gql-antd/node_modules
 
@@ -16,4 +22,10 @@
 /task-react-redux-gql-antd/.env.test.local
 /task-react-redux-gql-antd/.env.production.local
 
-/task-react-redux-gql-antd/*.log*
+#################################
+######## json-sanitizer #########
+#################################
+
+# dependencies
+/json-sanitizer/node_modules
+/json-sanitizer/build
