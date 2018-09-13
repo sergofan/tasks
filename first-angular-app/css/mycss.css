@@ -1,0 +1,92 @@
+.blue {
+    background-color: blue;
+    color: white;
+}
+.green {
+    background-color: green;
+    color: white;
+}
+.red {
+    background-color: red;
+    color: yellow;
+}
+
+.center { text-align: center;}
+.left { text-align: left;}
+.right { text-align: right;}
+.justify { text-align: justify;}
+.fleft { float: left;} /*-> similar to .pull-left already existing in bootstrap*/
+.fright { float: right;}  /*-> similar to .pull-right already existing in bootstrap*/
+.vab { vertical-align: bottom;}
+.bold { font-weight: bold;}
+.italic { font-style: italic;}
+
+.my-form {
+    min-width: 400px;
+    max-width: 45%;
+}
+
+/*body {font-family: sans-serif}*/
+
+.xls-output, .xls-input {
+    font-size: 10pt;
+    position: absolute;
+    /*height: 1.2em;*/
+    width: 50pt;
+    height: 16pt;
+    overflow: hidden;
+    padding-left: 4pt;
+}
+
+.xls-input {border: none;}
+
+.xls-output {
+    background: white;
+    pointer-events: none;
+    padding-top: 2pt;
+    height: 16pt;
+    /*height: 1.2em;*/
+}
+.xls-input:focus + .xls-output { display: none; }
+
+.xls-table {border-collapse: collapse;}
+
+.xls-td > div {
+    width: 50pt;
+    height: 16pt;
+}
+
+.xls-td {border: 1px solid #EEE;}
+
+.column-label > td, .row-label {
+    text-align: center;
+    background: #EEE;
+    border: 1px solid #AAA;
+    resize: both;
+}
+
+.row-label {width: 2em;}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    min-width: 400px;
+    height: 300px;
+}
+
+.ngVerticalBarVisible {
+  width: 1px;
+  background-color: #99CCFF;
+}
+
+.ngRow.odd {
+  background-color: #fdfdfd;
+}
+.ngRow.even {
+  background-color: #CCFFFF;
+}
+.ngRow.selected {
+  background-color: #c9dde1;
+}
+.ngCellText .col0 .colt0 {
+    background-color: red !important;
+}

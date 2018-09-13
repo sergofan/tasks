@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html ng-app="getDevApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular test</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="ng-grid/ng-grid.min.css">
+    <link rel="stylesheet" href="css/mycss.css">
+    <!--<link rel="stylesheet" href="jquery-ui/css/custom-theme/jquery-ui-1.10.4.custom.min.css">-->
+
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <!--<script src="jquery-ui/js/jquery-1.10.2.js"></script>-->
+    <script src="jquery-ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/angular-route.min.js"></script>
+    <script src="JavaScript-1.js"></script>
+    <script src="ng-grid/ng-grid-2.0.11.min.js"
+    <script src="turbolinks/jquery.turbolinks.min.js"></script>
+    <script src="turbolinks/turbolinks.min.js"></script>
+</head>
+<style>
+</style>
+<body ng-controller="MainCtrl">
+
+<!--  navbar  -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">AngularJS -=test app=-</a>
+        </div>
+    </nav>
+    <!--<div class="collapse navbar-collapse navbar-ex1-collapse">-->
+    <!--    <ul class="nav navbar-nav">-->
+    <!--        <li></li>-->
+    <!--    </ul>-->
+    <!--</div>-->
+<!--  navbar  -->
+
+    <div class="container">
+        <p>
+            <strong class="my-form text-center text-danger">
+                Привет, {{userGroup.name}}!
+            </strong>
+        </p>
+        <br>
+        <span gd-mydirective></span>
+        <form class="my-form well" role="form">
+            <div class="form-group">
+                <label for="input-peoples">Кол-во людей:</label>
+                <input class="form-control" id="input-peoples" placeholder=0 type="number" ng-model="peoples"></input>
+            </div>
+            <div class="form-group">
+                <label>
+                    Народу в комнате: {{peoples}} чел.
+                </label>
+                <label class="label label-info" ng-show="peoples>0" ng-class="{blue:peoples<10,green:peoples>9,red:peoples>19}">
+                    {{peopleDescription}}
+                </label>
+            </div>
+        </form>
+        
+        <div class="my-form" ng-view></div>
+        <br>
+        
+<!--        <div ng-controller="sheet">
+            <table class="xls-table">
+                <tr class="column-label">
+                    <td></td>
+                    <td ng-repeat="column in columns">
+                        {{column}}
+                    </td>
+                </tr>
+                <tr ng-repeat="row in rows">
+                    <td class="row-label">{{row}}</td>
+                    <td class="xls-td" ng-repeat="column in columns">
+                        <div>
+                            <input class="xls-input" ng-model="cells[column+row]"></input>
+                            <div class="xls-output" ng-bind="compute(column+row)"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+-->        
+        <div class="my-form" ng-controller="gridCtrl">
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+</body>
+</html>

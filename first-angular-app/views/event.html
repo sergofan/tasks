@@ -1,0 +1,11 @@
+<div>
+    <p>
+        <div ng-repeat="event in userGroup.events | filter:{url:event.url}">
+            {{event.descr}}
+        </div>
+    </p>
+</div>
+
+<a ng-href="/" class="btn btn-primary" role="button">
+    Назад к списку
+</a>
