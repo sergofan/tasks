@@ -1,7 +1,15 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# Editor directories and files
+*.idea
+*.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
 */node_modules
-*.log*
+*.log
 
 #################################
 ############# react #############
@@ -9,9 +17,11 @@
 
 # testing
 */coverage
+*/e2e/reports/
 
 # production
 */build
+*/dist
 
 # misc
 */.DS_Store
