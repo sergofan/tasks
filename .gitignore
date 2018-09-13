@@ -1,19 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# Editor directories and files
-*/*.idea
-*/*.vscode
-*/*.suo
-*/*.ntvs*
-*/*.njsproj
-*/*.sln
-
 */node_modules
-*/.tmp
 */bower_components
 */.tmp
-
-*/*.log
 
 # testing
 */coverage
@@ -25,9 +14,20 @@
 */.publish
 
 # misc
-*/.DS_Store
-*/.env.local
-*/.env.*.local
-*/.env.development.local
-*/.env.test.local
-*/.env.production.local
+*.DS_Store
+*.env.local
+*.env.*.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# Editor directories and files
+*.idea
+*.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+*.log
