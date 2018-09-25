@@ -1,183 +1,137 @@
 <template>
-  <div
-    class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <Navbar
-      v-if="shouldShowNavbar"
-      @toggle-sidebar="toggleSidebar"
-    />
+  <div class="theme-container">
+    <v-app>
+      <v-navigation-drawer app
+        :mini-variant.sync="mini"
+        v-model="drawer"
+        hide-overlay
+        stateless
+        value="true"
+      >
+        <v-toolbar flat class="transparent">
+          <v-list class="pa-0">
+            <v-list-tile avatar>
+              <v-list-tile-avatar tile>
+                <img src="/logo.png">
+              </v-list-tile-avatar>
 
-    <div
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    ></div>
+              <v-list-tile-content>
+                <v-list-tile-title>УОМГО</v-list-tile-title>
+              </v-list-tile-content>
 
-    <Sidebar
-      :items="sidebarItems"
-      @toggle-sidebar="toggleSidebar"
-    >
-      <slot
-        name="sidebar-top"
-        slot="top"
-      />
-      <slot
-        name="sidebar-bottom"
-        slot="bottom"
-      />
-    </Sidebar>
+              <v-list-tile-action>
+                <v-btn
+                  icon
+                  @click.stop="mini = !mini"
+                >
+                  <v-icon>chevron_left</v-icon>
+                </v-btn>
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
 
-    <div
-      class="custom-layout"
-      v-if="$page.frontmatter.layout"
-    >
-      <component :is="$page.frontmatter.layout"/>
-    </div>
+        <v-list class="pt-0" dense>
+          <v-divider></v-divider>
 
-    <Home v-else-if="$page.frontmatter.home"/>
+          <v-list-tile
+            v-for="item in items"
+            :key="item.title"
+            @click=""
+          >
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
 
-    <Page
-      v-else
-      :sidebar-items="sidebarItems"
-    >
-      <slot
-        name="page-top"
-        slot="top"
-      />
-      <slot
-        name="page-bottom"
-        slot="bottom"
-      />
-    </Page>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
 
-    <SWUpdatePopup :updateEvent="swUpdateEvent"/>
+      <!-- <v-list class="grow">
+        <v-list-tile
+          v-for="link in links"
+          :key="link"
+          @click=""
+        >
+          <v-list-tile-title v-text="link"></v-list-tile-title>
+        </v-list-tile>
+      </v-list> -->
+
+      <v-toolbar app
+        color="primary"
+        extended
+        >
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-title slot="extension" class="white--text">
+          УОМГО
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>search</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>more_vert</v-icon>
+        </v-btn>
+      </v-toolbar>
+
+      <v-content>
+        <Content class="main-content" />
+      </v-content>
+
+      <v-footer app></v-footer>
+
+    </v-app>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import nprogress from 'nprogress'
-import Home from './Home.vue'
-import Navbar from './Navbar.vue'
-import Page from './Page.vue'
-import Sidebar from './Sidebar.vue'
-import SWUpdatePopup from './SWUpdatePopup.vue'
-import { resolveSidebarItems } from './util'
+import Vue from "vue";
+import Vuetify from "vuetify";
+import colors from "vuetify/es5/util/colors";
+import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "roboto-fontface/css/roboto/roboto-fontface.css";
+import "vuetify/dist/vuetify.min.css";
+
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.blue.base,
+    secondary: colors.cyan.base,
+    accent: colors.green.accent3,
+    error: colors.red.base,
+    warning: colors.orange.accent4,
+    info: colors.blue.base,
+    success: colors.lightGreen.darken4
+  }
+});
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
-
-  data () {
+  components: {},
+  data() {
     return {
-      isSidebarOpen: false,
-      swUpdateEvent: null
-    }
-  },
-
-  computed: {
-    shouldShowNavbar () {
-      const { themeConfig } = this.$site
-      const { frontmatter } = this.$page
-      if (
-        frontmatter.navbar === false ||
-        themeConfig.navbar === false) {
-        return false
-      }
-      return (
-        this.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        this.$themeLocaleConfig.nav
-      )
-    },
-
-    shouldShowSidebar () {
-      const { frontmatter } = this.$page
-      return (
-        !frontmatter.layout &&
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
-      )
-    },
-
-    sidebarItems () {
-      return resolveSidebarItems(
-        this.$page,
-        this.$route,
-        this.$site,
-        this.$localePath
-      )
-    },
-
-    pageClasses () {
-      const userPageClass = this.$page.frontmatter.pageClass
-      return [
-        {
-          'no-navbar': !this.shouldShowNavbar,
-          'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar
-        },
-        userPageClass
-      ]
-    }
-  },
-
-  mounted () {
-    window.addEventListener('scroll', this.onScroll)
-
-    // configure progress bar
-    nprogress.configure({ showSpinner: false })
-
-    this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path && !Vue.component(to.name)) {
-        nprogress.start()
-      }
-      next()
-    })
-
-    this.$router.afterEach(() => {
-      nprogress.done()
-      this.isSidebarOpen = false
-    })
-
-    this.$on('sw-updated', this.onSWUpdated)
-  },
-
-  methods: {
-    toggleSidebar (to) {
-      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
-    },
-
-    // side swipe
-    onTouchStart (e) {
-      this.touchStart = {
-        x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
-      }
-    },
-
-    onTouchEnd (e) {
-      const dx = e.changedTouches[0].clientX - this.touchStart.x
-      const dy = e.changedTouches[0].clientY - this.touchStart.y
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        if (dx > 0 && this.touchStart.x <= 80) {
-          this.toggleSidebar(true)
-        } else {
-          this.toggleSidebar(false)
-        }
-      }
-    },
-
-    onSWUpdated (e) {
-      this.swUpdateEvent = e
-    }
+      drawer: true,
+      items: [
+        { title: 'Home', icon: 'dashboard' },
+        { title: 'About', icon: 'question_answer' }
+      ],
+      mini: true,
+      right: null
+    };
   }
-}
+};
 </script>
 
-<style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./styles/theme.styl" lang="stylus"></style>
+<style>
+.theme-container {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.10909;
+}
+.main-content {
+  margin: 32px 48px 0px;
+}
+</style>

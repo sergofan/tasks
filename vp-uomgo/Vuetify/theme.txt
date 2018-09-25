@@ -1,0 +1,22 @@
+ // names
+import colors from 'vuetify/es5/util/colors'
+ { 
+  primary: colors.blue.base,
+  secondary: colors.cyan.base,
+  accent: colors.green.accent3,
+  error: colors.red.base,
+  warning: colors.orange.accent4,
+  info: colors.blue.base,
+  success: colors.lightGreen.darken4
+}
+
+// hex
+{
+  primary: "#2196F3",
+  secondary: "#00BCD4",
+  accent: "#00E676",
+  error: "#f44336",
+  warning: "#FF6D00",
+  info: "#2196f3",
+  success: "#33691E"
+}
