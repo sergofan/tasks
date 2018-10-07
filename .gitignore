@@ -10,7 +10,6 @@
 */e2e/reports
 
 # production
-*/build
 */dist
 */.publish
 
