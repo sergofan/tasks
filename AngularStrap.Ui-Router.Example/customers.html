@@ -1,7 +1,0 @@
-<div class="list-group col-xs-6 col-sm-4">
-	<a ui-sref="home.customers.id({id: customer.id})" class="list-group-item pulse animated" ng-repeat="customer in customers" ng-click="$parent.selected = customer" ng-class="{active:selected == customer}">
-		<span class="fa fa-hand-o-right"></span>
-		{{ customer.name }}
-	</a>
-</div>
-<div class="ui-view"></div>
