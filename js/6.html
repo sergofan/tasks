@@ -1,0 +1,88 @@
+<!-- https://jsfiddle.net/fgkn1hsy/3/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <title>HTML5</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      background: #fff;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      background: #f5f5f5;
+      border: 1px solid #dddddd;
+      padding: 10px 15px;
+
+      height: 200px;
+      width: 50%;
+      margin: 20px auto;
+    }
+    .element {
+      background: #e7f1f6;
+      border: 1px solid #d0ebf8;
+      padding: 10px 15px;
+      text-align: center;
+    }
+    .container {
+      /* поскольку задаа высота (см. пояснение ниже) */
+      line-height: 200px;
+      text-align: center;
+    }
+    .element {
+      line-height: normal;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+  </head>
+  <body>
+    <!--
+    Необходимо разместить элемент `.element` по вертикали по центру.
+    Допускается использование вспомогательных dom-элементов.
+    -->
+
+    <!--
+      Есть несколько способов это сделаь.
+      Я бы предпочел использовать flex или grid,
+      Например можно прописать:
+      .container {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+      }
+      ИЛИ использовать табличное представление
+      ИЛИ с помощюб transform как то так
+      .container {
+        position: relative;
+      }
+      .element {
+        margin: 0;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+      ИЛИ margin-top отрицательный делать ИЛИ с помощью псевдоэлемента
+      НО:
+      все зависит от задачи, браузерной поддержки и еще бог
+      знает от чего в каком-то конкретном случае.
+      Здесь тогда надо дополнительные условия прописывать.
+      А раз задача была выровнять любыми средствами -
+      я так и поступил.
+      Или уточняйте условия если не устраивает решение.
+    -->
+
+    <div class="container">
+      <div class="element">
+        Вертикальное выравнивание по центру
+      </div>
+    </div>
+  </body>
+</html>
