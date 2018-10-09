@@ -1,7 +1,5 @@
 // https://jsfiddle.net/t21vry5s/3/
 
-// А это что подсказка что ли? :)
-
 function pause500ms () {
   return new Promise(res => setTimeout(res, 500));
 }
