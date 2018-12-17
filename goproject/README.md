@@ -11,4 +11,4 @@ cd goproject
 npm install && bower install && gulp
 bee run
 ```
-looks like <a href="http://sergofan.github.io/AngularStrap.Ui-Router.Example" target="_blank">here</a>
+looks like <a href="https://sergofan-git.gitlab.io/AngularStrap.Ui-Router" target="_blank">here</a>
